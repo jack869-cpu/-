@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LightNews - 輕新聞網</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background: #1e73be;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    nav {
+      background: #145a92;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      width: 90%;
+      max-width: 1000px;
+      margin: 20px auto;
+    }
+    .about {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    }
+    .about h2 {
+      margin-top: 0;
+      color: #1e73be;
+    }
+    .post-form {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    }
+    .post-form input, .post-form textarea, .post-form button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .post-form button {
+      background: #1e73be;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .post-form button:hover {
+      background: #145a92;
+    }
+    .posts .post {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    }
+    .post h3 {
+      margin-top: 0;
+      color: #1e73be;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #145a92;
+      color: #fff;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>LightNews 輕新聞網</h1>
+  </header>
+  <nav>
+    <a href="#about">網站自介</a>
+    <a href="#post-form">發表文章</a>
+    <a href="#posts">最新文章</a>
+  </nav>
+  <div class="container">
+    <section id="about" class="about">
+      <h2>網站自介</h2>
+      <p>這是一個輕量化的新聞風格網站，任何人都能發表文章，無需登入即可查看。介面簡潔直觀，專注於內容本身。</p>
+    </section>
+    <section id="post-form" class="post-form">
+      <h2>發表文章</h2>
+      <input type="text" id="title" placeholder="文章標題">
+      <textarea id="content" rows="5" placeholder="輸入文章內容..."></textarea>
+      <button onclick="addPost()">發表</button>
+    </section>
+    <section id="posts" class="posts">
+      <h2>最新文章</h2>
+      <!-- 文章將會出現在這裡 -->
+    </section>
+  </div>
+  <footer>
+    <p>© 2025 LightNews. All rights reserved.</p>
+  </footer>
+  <script>
+    function addPost() {
+      const title = document.getElementById("title").value.trim();
+      const content = document.getElementById("content").value.trim();
+      if (title === "" || content === "") {
+        alert("請輸入標題與內容！");
+        return;
+      }
+
+      const postsContainer = document.getElementById("posts");
+      const postDiv = document.createElement("div");
+      postDiv.className = "post";
+
+      const postTitle = document.createElement("h3");
+      postTitle.textContent = title;
+
+      const postContent = document.createElement("p");
+      postContent.textContent = content;
+
+      postDiv.appendChild(postTitle);
+      postDiv.appendChild(postContent);
+      postsContainer.appendChild(postDiv);
+
+      // 清空輸入框
+      document.getElementById("title").value = "";
+      document.getElementById("content").value = "";
+    }
+  </script>
+</body>
+</html>
